@@ -11,9 +11,9 @@ def check(seq):
 
 # This function returns transcribed sequence for DNA
 def transcribe(seq):
-    x = 'Tt'
-    y = 'Uu'
-    transcribe_table = seq.maketrans(x, y)
+    t_nucl = 'Tt'
+    u_nucl = 'Uu'
+    transcribe_table = seq.maketrans(t_nucl, u_nucl)
     return seq.translate(transcribe_table)
     
 # This function returns reversed sequence for DNA or RNA

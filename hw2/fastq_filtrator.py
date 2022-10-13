@@ -93,3 +93,4 @@ def main(input_fastq, output_file_prefix, gc_bounds=(0, 100),
                     add_read_to_failed(read_header, read_seq,
                                        read_plus_str, read_qual,
                                        output_file_prefix)
+

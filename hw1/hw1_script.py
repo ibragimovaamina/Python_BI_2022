@@ -1,8 +1,8 @@
 # This function checks whether input sequence is valid. If so, decides whether it's DNA or RNA
 def check(seq):
-    if 'u' in seq.lower() and 't' in seq.lower():
+    if {'t', 'u'} <= set(seq.lower()):
         return 'Invalid' #contains T and U simultaneously
-    elif seq.lower().replace('a','').replace('c','').replace('g','').replace('t','').replace('u','') != '':
+    elif set(seq.lower()).issubset({'a', 'c', 'g', 't', 'u'}) == False:
         return 'Invalid' #contains symbols besides nucleobases
     elif 'u' in seq.lower():
         return 'RNA' 
@@ -22,27 +22,27 @@ def reverse(seq):
 
 # This function makes complementary sequence for DNA
 def dna_complement(seq):
-    x = 'ACGTacgt'
-    y = 'TGCAtgca'
-    complement_table = seq.maketrans(x, y)
+    dna_nucl_ref = 'ACGTacgt'
+    dna_nucl_compl = 'TGCAtgca'
+    complement_table = seq.maketrans(dna_nucl_ref, dna_nucl_compl)
     return seq.translate(complement_table)
 
 # This function makes complementary sequence for RNA
 def rna_complement(seq):
-    x = 'ACGUacgu'
-    y = 'UGCAugca'
-    complement_table = seq.maketrans(x, y)
+    rna_nucl_ref = 'ACGUacgu'
+    rna_nucl_compl = 'UGCAugca'
+    complement_table = seq.maketrans(rna_nucl_ref, rna_nucl_compl)
     return seq.translate(complement_table)
 
     
 while True:
-    command = str(input('Enter command: '))
+    command = input('Enter command: ')
     if command.lower() == 'exit':
         print('Good luck!')
         break
     elif command.lower() == 'transcribe':
         while True:
-            seq = str(input('Enter sequence: '))
+            seq = input('Enter sequence: ')
             if check(seq) == 'Invalid':
                 print('Invalid sequence. Try again!')
             elif check(seq) == 'RNA':
@@ -52,7 +52,7 @@ while True:
                 break
     elif command.lower() == 'reverse':
         while True:
-            seq = str(input('Enter sequence: '))
+            seq = input('Enter sequence: ')
             if check(seq) == 'Invalid':
                 print('Invalid sequence. Try again!')
             else:
@@ -60,7 +60,7 @@ while True:
                 break
     elif command.lower() == 'complement':
         while True:
-            seq = str(input('Enter sequence: '))
+            seq = input('Enter sequence: ')
             if check(seq) == 'Invalid':
                 print('Invalid sequence. Try again!')
             elif check(seq) == 'RNA':
@@ -71,7 +71,7 @@ while True:
                 break
     elif command.lower() == 'reverse complement':
         while True:
-            seq = str(input('Enter sequence: '))
+            seq = input('Enter sequence: ')
             if check(seq) == 'Invalid':
                 print('Invalid sequence. Try again!')
             elif check(seq) == 'RNA':

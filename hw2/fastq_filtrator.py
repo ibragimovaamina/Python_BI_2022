@@ -4,7 +4,7 @@ def gc_content(read_seq):
 
 # This function checks whether GC-content of sequence is in bounds 
 def gc_filter(read_seq, gc_bounds):
-    if type(gc_bounds) == tuple:
+    if isinstance(gc_bounds, (tuple, list)):
         min_gc, max_gc = gc_bounds
     else:    # Only upper bound is given
         min_gc = 0
@@ -20,7 +20,7 @@ def length(read_seq):
     
 # This function checks whether length of sequence is in bounds 
 def len_filter(read_seq, length_bounds):
-    if type(length_bounds) == tuple:
+    if isinstance(length_bounds, (tuple, list)):
         min_len, max_len = length_bounds
     else:    # Only upper bound is given
         min_len = 0

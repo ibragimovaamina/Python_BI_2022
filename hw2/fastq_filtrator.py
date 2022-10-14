@@ -84,7 +84,7 @@ def main(input_fastq, output_file_prefix, gc_bounds=(0, 100),
             if (gc_filter(read_seq, gc_bounds) == 'Pass' and
                 len_filter(read_seq, length_bounds) == 'Pass' and
                 qual_filter(read_qual, quality_threshold) == 'Pass'):
-            # Appending read to one of output files 
+            # Appending read to output files 
                 add_read_to_passed(read_header, read_seq,
                                    read_plus_str, read_qual,
                                    output_file_prefix)

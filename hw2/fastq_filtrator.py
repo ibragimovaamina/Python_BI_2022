@@ -78,7 +78,7 @@ def main(input_fastq, output_file_prefix, gc_bounds=(0, 100),
             read_seq = file.readline()        ## for convenient appending to output files.
             read_plus_str = file.readline()   ## I'm going to take '\n' into account 
             read_qual = file.readline()       ## when I'll be counting length of these strings.
-            if read_header == '':    # Reached the end of input file, stop reading
+            if read_header == '' or read_header == '\n':    # Reached the end of input file, stop reading
                 break                            
             # Checking read
             if (gc_filter(read_seq, gc_bounds) == 'Pass' and

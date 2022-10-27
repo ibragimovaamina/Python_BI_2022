@@ -42,6 +42,5 @@ def compute_pair_distances(matrix):
     for n_row in range(dim):
         for n_col in range(dim):
             if n_row != n_col: # filling matrix of pair distances
-                pair_distances[n_row, n_col] = np.linalg.norm(matrix[n_row] - 
-matrix[n_col])
+                pair_distances[n_row, n_col] = np.linalg.norm(matrix[n_row] - matrix[n_col])
     return pair_distances

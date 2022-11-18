@@ -82,4 +82,21 @@ fig.set(xlabel='Lengths of words', ylabel='Proportion of words of a length')
 # Task 6. Function for translating on kirpichnyi
 
 def luchshij_kirpichnyi_perevodchik_ever(string):
-    return re.sub(r'([уеёыаоэяию])', '\\1К\\1', string, flags=re.IGNORECASE)#.lower()
+    return re.sub(r'([уеёыаоэяию])', '\\1к\\1', string, flags=re.IGNORECASE)#.lower()
+
+
+
+# Task 7. Function for extracting sentences consisting of given number of words
+
+def find_n_words_sentences(text, n_words):
+    result = []
+    
+    text = re.sub(r' +', ' ', text) # in case there are several spaces in a row 
+    
+    #  Splitting input text into sentences
+    sentences = re.split('\. |\.\.\. |\? |! ', text)
+    
+    for sentence in sentences:
+        if sentence.count(' ') == n_words - 1:   #  n words in sentence ~ n-1 spaces        
+            result.append(tuple(re.split(' ', sentence)))
+    return result
